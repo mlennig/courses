@@ -10,7 +10,7 @@ const circle = {
         y: 1
     },
     isVisible: true,
-    draw: function(){
+    draw: function(){           // Method
         console.log('draw');
     }
 };
