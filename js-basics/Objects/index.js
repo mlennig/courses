@@ -19,6 +19,7 @@
 
 //////////////////////////// Factory Functions ////////////////////////////
 // Another way to creat objects. 
+// Naming convention: Camel Case/Notation
 function createCircle(radius){
     return {
         radius,                     // When key = value, you can write it w/out the key
@@ -33,7 +34,24 @@ console.log(circle1);
 const circle2 = createCircle(2);
 console.log(circle2);
 
+const myCircle = createCircle(1);
+
 //////////////////////////// Constructor Functions ////////////////////////////
+// Naming convention: Pascal Case/Notation
+/* This */
+// 1. The operator first creates an empty object;
+// 2. Then it will set this to poing to this object;
+// 3. Finally it will return that object from this function.
+function Circle(radius){
+    this.radius = radius;       // This referenes an empty object
+    this.draw = function(){
+        console.log('draw');
+    }
+    //return this;                // This happens "under the hood"
+}
+
+const circle = new Circle(1);   // Creates empty JS object, similar to cpp
+
 //////////////////////////// Dynamic Nature of Objects ////////////////////////////
 //////////////////////////// Constructor Property ////////////////////////////
 //////////////////////////// Functions are Objects ////////////////////////////
