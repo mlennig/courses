@@ -183,7 +183,7 @@ const second = [4, 5, 6];
 
 //const numbers = [1, 2, 3];
 
-// You cannot get indives with for-of, but you can 
+// You cannot get indicses with for-of, but you can 
 // with for-in
 /* for(let number of numbers)
     console.log(number); */
