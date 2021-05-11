@@ -57,16 +57,25 @@ function Circle(radius){
 const circle = {
     radius: 1
 };
+
 circle.color = 'yellow';
 circle.draw = function(){}
 
 delete circle.color;
-delete circle.draw;
-
-console.log(circle);
-
+delete circle.draw; 
 
 //////////////////////////// Constructor Property ////////////////////////////
+const circle = createCircle(1);
+const another = new Circle(1);
+
+let x = {};
+
+// let x = new Object();
+
+new String();   // '', "", '' <-- literals
+new Boolean();  // We use true, false
+new Number();   // 1, 2, 3, ...
+
 //////////////////////////// Functions are Objects ////////////////////////////
 //////////////////////////// Value vs Reference Types ////////////////////////////
 //////////////////////////// Enumerating Properties of an Object ////////////////////////////
