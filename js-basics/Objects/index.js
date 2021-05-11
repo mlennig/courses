@@ -50,9 +50,22 @@ function Circle(radius){
     //return this;                // This happens "under the hood"
 }
 
-const circle = new Circle(1);   // Creates empty JS object, similar to cpp
+//const circle = new Circle(1);   // Creates empty JS object, similar to cpp
 
 //////////////////////////// Dynamic Nature of Objects ////////////////////////////
+// In using const, we cannot reset circle toa  new object
+const circle = {
+    radius: 1
+};
+circle.color = 'yellow';
+circle.draw = function(){}
+
+delete circle.color;
+delete circle.draw;
+
+console.log(circle);
+
+
 //////////////////////////// Constructor Property ////////////////////////////
 //////////////////////////// Functions are Objects ////////////////////////////
 //////////////////////////// Value vs Reference Types ////////////////////////////
