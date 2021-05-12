@@ -26,6 +26,6 @@ function getMax2(array){
 
     // If you don't pass an index for the initial value, 
     // the index will automatically be set to the first
-    // value in the arry.
+    // value in the array.
     return array.reduce((a, b) => (a > b) ? a : b);
 }
