@@ -399,7 +399,6 @@ const video4 = {
     tags: ['a', 'b', 'c'],
     showTags(){             
         this.tags.forEach(tag => {
-
             console.log(this.title, tag);    
         });
     }
