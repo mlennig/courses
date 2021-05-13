@@ -1,10 +1,12 @@
 /** Notes II on Objects **/
 
 /*************** 0. Four Pillars of OOP ***************/
-// Encapsulation
-// Abstraction
-// Inheritance
-// Polymorphism
+/* The best functions are those with no parameters */
+// Encapsulation: Group related variables and functions together, reduce complexity, increase reusability
+// Abstraction: Reduce the impact of change, reduce complexity
+// Inheritance: Eliminate redundant code
+// Polymorphism: Allows you to eliminate long if/else switch/case statements
+
 
 /*************** 1. Introduction ***************/
 /*************** 2. Object Literals ***************/
