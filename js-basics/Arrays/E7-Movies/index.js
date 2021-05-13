@@ -9,7 +9,7 @@ const movies = [
 
 // All the movies in 2018 with rating > 4
 // Sort them by their rating in 
-// Descending order
+// Descending order   
 // Pick their title property & display it on the console: 'b' 'a'
 
 movies.sort(function(a, b){
