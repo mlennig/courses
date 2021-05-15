@@ -67,7 +67,7 @@ circle.draw(); */
 // as a constructor function. 
 
 
-// Factory Function
+/* // Factory Function
 function createCircle(radius){
     return {
         radius,
@@ -93,13 +93,123 @@ function Circle(radius){
 // 1. Creates an empty object,
 // 2. Then it will set this to point to that object,
 // 3. Finally, it will return that object from the Circle function.
-const another = new Circle(1);
+const another = new Circle(1); */
 
 
 /*************** 5. Constructor Property ***************/
+// Every object in JS has a function called constructor
+// When we create an object using object literal syntax,
+// internally the JS engine uses this constructor 
+// function.
+
+/* // let x = new Object();
+let x = {};
+
+new String();       // But usually we use '', "", ``
+new Boolean();      // true, false
+new Numnber()       // 1, 2, 3, ... */
+
 /*************** 6. Functions are Objects ***************/
+
+/* function Circle(radius){
+    this.radius = radius;
+    this.draw = function(){
+        console.log('draw');
+    }
+} */
+
+// Circle.
+// Purple are methods
+// Blue are properties
+
+/* const Circle1 = new Function('radius', `
+    this.radius = radius;
+    this.draw = function(){
+    console.log('draw');
+}
+`);
+
+const circle = new Circle1(1);
+ */
+
+/* // this will reference the object here {}
+Circle.call({}, 1);
+// Same as call but you need to pass arguments as array
+Circle.apply({}, [1, 2, 3]);
+
+const another = new Circle(1); */
+
 /*************** 7. Values vs Reference Types ***************/
+
+// Value Types aka Primitives
+// Number
+// String
+// Boolean
+// Symbol
+// undefined
+// null
+
+/* // Object not stored in variable
+// address of object stored in variable.
+let x = { value:10 };   
+let y = x;
+
+x.value = 20;
+
+let number = 10;
+// Value of primitive is copied
+function increase(number){
+    number++;
+}
+
+// Reference Types - Objects
+// Object
+// Function
+// Array
+
+let obj = { value: 10 };
+// Value of primitive is copied
+function increase(obj){
+    obj.value++;
+}
+
+increase(number);
+console.log(number);
+
+increase(obj);
+console.log(obj); */
+
 /*************** 8. Adding or Removing Properties ***************/
+
+function Circle(radius){
+    this.radius = radius;
+    this.draw = function(){
+        console.log('draw');
+    }
+}
+
+// Objects are dynamic
+const circle = new Circle(10);
+
+// Dot notation
+circle.location = { x: 1 };
+
+// Bracket notation
+circle['location'] = { x: 1 };
+
+// or,
+// If you have special characters or a space, use bracket
+// notation
+const propertyName = 'center location';
+circle[propertyName] = { x: 1 };
+
+// Deleting properties
+// Dot notation
+delete circle.location;
+// Bracket notation
+delete circle['location'];
+
+
 /*************** 9. Enumerating Properties ***************/
 /*************** 10. Abstraction ***************/
 /*************** 11. Private Properties and Methods ***************/
