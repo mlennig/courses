@@ -181,7 +181,7 @@ console.log(obj); */
 
 /*************** 8. Adding or Removing Properties ***************/
 
-function Circle(radius){
+/* function Circle(radius){
     this.radius = radius;
     this.draw = function(){
         console.log('draw');
@@ -208,9 +208,111 @@ circle[propertyName] = { x: 1 };
 delete circle.location;
 // Bracket notation
 delete circle['location'];
-
-
+ */
 /*************** 9. Enumerating Properties ***************/
+
+/* function Circle(radius){
+    this.radius = radius;
+    this.draw = function(){
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10);
+
+for(let key in circle){
+    console.log(key, circle[key]);
+}
+
+// If you want only the properties and not the methods
+for(let key in circle){
+    if(typeof circle[key] !== 'function'){
+        console.log(key, circle[key]);
+    }
+}
+
+// Returns all the keys in a circle as an array
+const keys = Object.keys(circle);
+console.log(keys);
+
+// To check if an object has a specific property
+if('radius' in circle)
+console.log('Circle has a radius.'); */
+
 /*************** 10. Abstraction ***************/
+
+/* function Circle(radius){
+    this.radius = radius;
+    this.defaultLocation = { x: 0, y: 0 };
+    this.computeOptimumLocation = function(factor){
+        // ...
+    }
+    this.draw = function(){
+        this.computeOptimumLocation();
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10); */
+
 /*************** 11. Private Properties and Methods ***************/
+// A closure determines what variables will be accessible to
+// an inner function.
+
+/* function Circle(radius){
+    this.radius = radius;
+
+    // Setting this as a local variable makes it private. 
+    let defaultLocation = { x: 0, y: 0 };
+
+    let computeOptimumLocation = function(factor){
+        // ...
+    }
+
+    // This function will have access to the local variables 
+    // defined inside of the function, as well as variables
+    // defined in its parent function. 
+    // Scope is temporary, closure remains.
+    // The two variables defined above are part of the closure
+    // of this function. 
+    this.draw = function(){
+        computeOptimumLocation(0.1);
+        
+
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10); */
+
 /*************** 12. Getters and Setters ***************/
+
+function Circle(radius){
+    this.radius = radius;
+
+    let defaultLocation = { x: 0, y: 0 };
+
+    this.getDefaultLocation = function(){
+        return defaultLocation;
+    }
+
+    this.draw = function(){
+        console.log('draw');
+    };
+
+    Object.defineProperty(this, 'defaultLocation', {
+        // get is a special keyword in JS
+        get: function(){
+            return defaultLocation;
+        },
+        set: function(value){
+            if(!value.x || !value.y){
+                throw new Error('Invalid Location');
+            }
+            defaultLocation = value;
+        }
+    });
+}
+
+const circle = new Circle(10);
+circle.draw();
