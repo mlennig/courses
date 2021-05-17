@@ -56,7 +56,7 @@ const c = new Circle(1); */
 
 /************** 3. Calling the Super Constructor **************/
 
-function Shape(color){
+/* function Shape(color){
     this.color = color;
 }
 
@@ -79,10 +79,83 @@ Circle.prototype.draw = function(){
 }
 
 const s = new Shape();
-const c = new Circle(1);
+const c = new Circle(1); */
 
 /************** 4. Intermediate Function Inheritance **************/
+
+/* function Shape(color){
+    this.color = color;
+}
+
+Shape.prototype.duplicate = function(){
+    console.log('duplicate');
+}
+
+// Intermediate function inheritance
+function extend(Child, Parent){
+    Child.prototype = Object.create(Parents.prototype)
+    Child.prototype.constructor = Child;
+}
+
+function Circle(radius, color){
+    Shape.call(this, color);
+
+    this.radius = radius;
+}
+
+extend(Circle, Shape);
+
+Circle.prototype.draw = function(){
+    console.log('draw');
+}
+
+extend(Square, Shape);
+
+function Square(size){
+    this.size = size;
+}
+
+const s = new Shape();
+const c = new Circle(1, 'red'); */
+
 /************** 5. Method Overriding **************/
+
+
+// Intermediate function inheritance
+function extend(Child, Parent){
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
+function Shape(){
+}
+
+Shape.prototype.duplicate = function(){
+    console.log('duplicate');
+}
+
+function Circle(){
+}
+
+extend(Circle, Shape);
+
+// Must put this after extending this circle, because
+// at this point, we are resetting the prototype.
+// If we define this before resetting the prototype,
+// then this implementation is going to disappear. 
+Circle.prototype.duplicate = function(){
+    // Let's say we want to call the duplicate method on 
+    // the parent or the shape object.
+    // If we're using thi sin this implementation, then
+    // we need to use the call method to set the context
+    // for this.
+    Shape.prototype.duplicate.call(this);
+
+    console.log('duplicate circle');
+}
+
+const c = new Circle();
+
 /************** 6. Polymorphism **************/
 /************** 7. When to Use Inheritance **************/
 /************** 8. Mixins **************/
