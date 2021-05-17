@@ -191,7 +191,7 @@ console.log(c[key]);
 
 /************** 6. Private Members Using WeakMaps **************/ 
 
-// A WeakMap is essentially a dictionary where
+/* // A WeakMap is essentially a dictionary where
 // keys are objects and values can be anything.
 // Called WeakMaps bc the keys are weak.
 // If there are no references to these keys, 
@@ -230,8 +230,82 @@ class Circle{
     }
 }
 
-const c = new Circle(1);
+const c = new Circle(1); */
 
 /************** 7. Getters and Setters **************/ 
+
+/* const _radius = new WeakMap();
+
+class Circle{
+    constructor(radius){
+        _radius.set(this, radius);
+
+    }
+
+    get radius(){
+        return _radius.get(this);
+    }
+
+    set radius(value){
+        if (value <= 0) throw new Error('invalid radius');
+        _radius.set(this, value);
+    }
+}
+
+const c = new Circle(1); */
+
 /************** 8. Inheritance **************/ 
+
+/* class Shape{
+    // If you have a constructor in the parent class,
+    // and you have a constructor in the derived class,
+    // you must ensure you call the parent class constructor
+    // inside the derived constructor to initialize the 
+    // base object/
+    constructor(color){
+        this.color = color;
+    }
+
+    move(){
+        console.log('move');
+    }
+}
+
+class Circle extends Shape {
+    constructor(color, radius){
+        // Call the super constructor
+        super(color);
+        this.radius = radius;
+    }
+
+    draw(){
+        console.log('draw');
+    }
+}
+
+const c = new Circle('red', 1); */
+
 /************** 9. Method Overriding **************/ 
+// Method override is when we have a method
+// in a base class or base object, but we want
+// to change its implementation in a derived 
+// class or object.
+
+class Shape{
+    move(){
+        console.log('move');
+    }
+}
+
+class Circle extends Shape {
+    move(){
+        // If we want to use some of the code that you've
+        // implemented in the parent move method:
+        super.move();
+        console.log('circle move');
+    }
+}
+
+const c = new Circle();
+
+
