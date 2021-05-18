@@ -25,11 +25,11 @@ c.draw(); */
 
 /************** 3. ES6 Modules **************/ 
 
-// Add .js as a temporary workaround for this lecture
+/* // Add .js as a temporary workaround for this lecture
 import {Circle} from './circle.js';
 
 const c = new Circle(10);
-c.draw();
+c.draw(); */
 
 /************** 4. ES6 Tooling **************/ 
 //// for Browser Applications ////
@@ -49,7 +49,32 @@ c.draw();
 
 
 /************** 5. Babel **************/ 
-/************** 6. Webpack **************/ 
+//// NPM ////
+// Used to install 3rd party libraries and tools 
+// In a terminal, run 'npm init --yes', which creates a file in 
+// our es6-tooling folder called package.json, which is an 
+// identification for our application. 
+// It includes properties like name, version, description, etc. 
+// Babel-Cli //
+// Babel's command line interface. It's the tool that we run from 
+// the command line, like npm. We run it from the command line and
+// give it the name of our JS file, and then it will convert or 
+// compiule that JS code. 
+// Babel-Core //
+// The core of babel where all the logic for transpiring code is
+// implemented. 
+// Babel-Preset //
+// In babel, we have a plugin for every new JS feature started from
+// ES6. 
+
+/************** 6. Webpack **************/
+
+// Add .js as a temporary workaround for this lecture
+import {Circle} from './src/circle.js';
+
+const c = new Circle(10);
+c.draw();
+
 /************** 7. Cheat Sheet **************/ 
 /************** 8. What to Learn Next **************/ 
 
