@@ -10,22 +10,19 @@
 // ES6 Modules 
 // JS now natively supports a module format
 
-const _radius = new WeakMap();
+/************** 2. CommonJS Modules **************/ 
+// Notes on Modularity //
+// Cohesion: Highly related things should go together
 
-class Circle{
-    constructor(radius){
-        _radius.set(this, radius);
-    }
-
-    draw(){
-        console.log('Circle with radius' + _radius.get(this));
-    }
-}
+// Import the module
+// CommonJS Format
+// Pass a relative path to the target module
+// No need to add extension 
+const Circle = require('./circle');
 
 const c = new Circle(10);
 c.draw();
 
-/************** 2. CommonJS Modules **************/ 
 /************** 3. ES6 Modules **************/ 
 /************** 4. ES6 Tooling **************/ 
 /************** 5. Babel **************/ 
