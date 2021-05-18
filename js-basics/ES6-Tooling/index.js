@@ -32,6 +32,22 @@ const c = new Circle(10);
 c.draw();
 
 /************** 4. ES6 Tooling **************/ 
+//// for Browser Applications ////
+// Transpiler //
+// Translator + Compiler
+// We give it our modern JS code and convert it into code all
+// browsers can understand (ES5)
+// e.g. Babel
+// Bundler //
+// Responsible for combining all our JS files into a single file, 
+// which we call a bundle. 
+// Most popular one is Webpack. It will:
+// 1. Combine all JS codes into a single file
+// 2. Minify our cody by getting rid of all the white spaces and comments
+// 3. Uglify our code by shortening the name of our identifiers,
+// like classes, functions, objects, etc. 
+
+
 /************** 5. Babel **************/ 
 /************** 6. Webpack **************/ 
 /************** 7. Cheat Sheet **************/ 
