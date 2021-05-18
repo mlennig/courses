@@ -1,11 +1,12 @@
-// Everything in a module is considered to be private, 
+/************** 2. CommonJS Modules **************/
+/* // Everything in a module is considered to be private, 
 // so it won't be accessible from the outside, unless
 // we explicitly export it. 
 
 // Implementation Detail
 const _radius = new WeakMap();
 
-// Public INterface
+// Public Interface
 class Circle{
     constructor(radius){
         _radius.set(this, radius);
@@ -28,4 +29,20 @@ class Circle{
 // Now instead of adding a Circle property to the object, 
 // we can just reset this object to Cicle. So when we import
 // the circle module, we'll get the Circle class. 
-module.exports = Circle;
+module.exports = Circle; */
+
+/************** 3. ES6 Modules **************/ 
+
+// Implementation Detail
+const _radius = new WeakMap();
+
+// Public Interface
+export class Circle{
+    constructor(radius){
+        _radius.set(this, radius);
+    }
+
+    draw(){
+        console.log('Circle with radius' + _radius.get(this));
+    }
+}

@@ -11,7 +11,7 @@
 // JS now natively supports a module format
 
 /************** 2. CommonJS Modules **************/ 
-// Notes on Modularity //
+/* // Notes on Modularity //
 // Cohesion: Highly related things should go together
 
 // Import the module
@@ -21,9 +21,16 @@
 const Circle = require('./circle');
 
 const c = new Circle(10);
-c.draw();
+c.draw(); */
 
 /************** 3. ES6 Modules **************/ 
+
+// Add .js as a temporary workaround for this lecture
+import {Circle} from './circle.js';
+
+const c = new Circle(10);
+c.draw();
+
 /************** 4. ES6 Tooling **************/ 
 /************** 5. Babel **************/ 
 /************** 6. Webpack **************/ 
