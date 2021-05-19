@@ -21,7 +21,7 @@ sayHello();
 
 /******************* 3. Objects *******************/
 
-const person = {
+/* const person = {
   name: 'Mosh',
   // Old way to define function
   //walk: function(){},
@@ -37,10 +37,50 @@ person.talk();
 // Used ahead of time when we don't know what property
 // or method we're going to access.
 const targetMember = 'name';
-person[targetMember.value] = 'John';
+person[targetMember.value] = 'John'; */
 
 /******************* 4. The this Keyword *******************/
+
+/* const person = {
+  name: 'Mosh',
+  walk(){
+    console.log(this);
+  },
+};
+
+person.walk();
+
+// Here we're not calling the walk function, we're just
+// getting a reference to the function.
+// This now makes walk a function.
+const walk = person.walk;
+//console.log(walk);
+
+// If we call a function as a method in an object, this will
+// always return a reference to that object.
+// However, if you call a function as a stand alone object, 
+// or outside of an object, this will return a reference
+// to the global object.
+walk(); */
+
 /******************* 5. Binding this *******************/
+
+const person = {
+  name: 'Mosh',
+  walk(){
+    console.log(this);
+  },
+};
+
+person.walk();
+
+// We can use .bind to bind a function to an object. 
+// In the case below, the bind method will return a 
+// new instance of this walk function and set this
+// to point to this person object. 
+const walk = person.walk.bind(person);
+walk();
+
 /******************* 6. Arrow functions *******************/
 /******************* 7. Arrow Functions and this *******************/
 /******************* 8. Array.map Mehod *******************/
