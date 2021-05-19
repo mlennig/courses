@@ -148,17 +148,143 @@ person.talk(); */
 
 /******************* 8. Array.map Mehod *******************/
 
-const colors = ['red', 'green', 'blue'];
+/* const colors = ['red', 'green', 'blue'];
 
 
 //const items = colors.map(color => '<li>' + color + '</li>');
 // Or using template literals
 const items = colors.map(color => `<li>${color}</li>`);
 console.log(items);
-
+ */
 /******************* 9. Object Destructuring *******************/
+
+/* const address = {
+  street: '',
+  city: '',
+  country: '',
+}; */
+
+// Old way
+/* const street = address.street;
+const city = address.city;
+const country = address.country; */
+
+/* // ES6
+const { street, city, country } = address;
+// With the code below we're defining a new constant 
+// called st and setting that to the street property
+// of the address object. 
+const { street:st } = address;
+ */
+
 /******************* 10. Spread Operator *******************/
+
+/* const first = [1, 2, 3];
+const second = [4, 5, 6];
+
+// Old Way
+//const combined = first.concat(second);
+
+// ES6
+//const combined = [...first, ...second];
+// can also add elements this way
+//const combined = [...first, 'a',...second, 'b'];
+
+// Spread operator can also be used to clone an array
+const clone = [...first];
+console.log(first);
+console.log(clone); */
+
+/* // Can also apply the spread operator to objects
+const first = { name: 'Mosh' };
+const second = { job: 'Instructor' };
+// Can be used to combine objects
+const combined = {...first, ...second, location: 'Australia'};
+console.log(combined);
+// Can be used to clone objects
+const clone = {...first}; */
+
 /******************* 11. Classes *******************/
+
+/* // Old way
+const person = {
+  name: "Mosh",
+  walk(){
+    console.log("walk");
+  }
+};
+
+// Here we're duplicating the method, too much unnecessary code
+const person2 = {
+  name: "Mosh",
+  walk(){
+    console.log("walk");
+  }
+}; */
+
+/* // ES6 Classes
+// Now this can serve as a blueprint for creating person objects
+class Person {
+  constructor(name){
+    this.name = name;
+  }
+
+  walk(){
+    console.log("walk");
+  }
+}
+
+// To create an object from a Class, we need to new up
+const person = new Person('Mosh'); */
+
 /******************* 12. Inheritance *******************/
+
+/* // ES6 Classes
+class Person {
+  constructor(name){
+    this.name = name;
+  }
+
+  walk(){
+    console.log("walk");
+  }
+}
+
+const person = new Person('Mosh');
+
+class Teacher extends Person{
+  constructor(name, degree){
+    super(name);
+    this.degree = degree;
+  }
+
+  teach(){
+    console.log("teach");
+  }
+}
+
+const teacher = new Teacher('Mosh', 'MSc'); */
+
 /******************* 13. Modules *******************/
+
+/* import { Person } from './person';
+import { Teacher } from './teacher';
+
+const teacher = new Teacher('Mosh', 'MSc');
+teacher.teach();
+ */
 /******************* 14. Named and Default Exports *******************/
+
+// Typically we use default exports when there is only one object
+// we want to export. 
+
+// Default -> import ... from '';
+// Named -> import { ... } from  '';
+
+
+// Remove curly braces
+import  Teacher, {promote}  from './teacher';
+
+
+const teacher = new Teacher('Mosh', 'MSc');
+teacher.teach();
