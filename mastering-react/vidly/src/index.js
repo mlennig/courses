@@ -19,33 +19,6 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-const IDs = [];
-const titles = [];
-const genres = [];
-const stock = [];
-const ratings = [];
-
-const moviesList = getMovies();
-for (let m of moviesList) {
-  IDs.push(m._id);
-  titles.push(m.title);
-  genres.push(m.genre);
-  stock.push(m.stock);
-  ratings.push(m.ratings);
-}
-
-const titleItems = titles.map((title) => `<td>${title}</td>`);
-console.log(titleItems);
-
-/* const colors = ['red', 'green', 'blue'];
-
-
-//const items = colors.map(color => '<li>' + color + '</li>');
-// Or using template literals
-const items = colors.map(color => `<li>${color}</li>`);
-console.log(items);
- */
-
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
