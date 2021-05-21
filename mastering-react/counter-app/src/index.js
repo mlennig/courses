@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
-import Counters from "./components/counters";
 
 // BANK OF AMERICA
 
@@ -12,7 +11,7 @@ import Counters from "./components/counters";
 // wherever we have a counter element, we'll get the output
 // of the counter component, which is determined by what is
 // returned from the render method.
-ReactDOM.render(<Counters />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
