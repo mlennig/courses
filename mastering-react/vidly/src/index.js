@@ -5,12 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
-import movies, {
-  getMovies,
-  getMovie,
-  saveMovie,
-  deleteMovie,
-} from "./services/fakeMovieService";
+// import movies, {
+//   getMovies,
+//   getMovie,
+//   saveMovie,
+//   deleteMovie,
+// } from "./services/fakeMovieService";
 
 ReactDOM.render(
   <React.StrictMode>
