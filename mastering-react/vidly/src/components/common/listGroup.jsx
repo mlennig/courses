@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import _ from "lodash";
+//import _ from "lodash";
 import propTypes from "prop-types";
 
 const ListGroup = (props) => {
