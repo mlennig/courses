@@ -1,30 +1,31 @@
 import React, { Component } from "react";
 import Customers from "../customers";
-import { Route } from "react-router-dom";
+import { Link, NavLink, Route } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav class="navbar navbar-light bg-light">
-      <ul class="nav ">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      {" "}
+      <ul className="nav">
+        <li className="nav-item">
+          <Link className="navbar-brand" aria-current="page" to="/">
             Vidly
-          </a>
+          </Link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <NavLink className="nav-item nav-link" to="/movies">
             Movies
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <NavLink className="nav-item nav-link" to="/customers">
             Customers
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/rentals">
             Rentals
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
