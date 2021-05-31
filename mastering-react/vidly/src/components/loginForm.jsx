@@ -1,21 +1,36 @@
 import React, { Component } from "react";
+import Input from "./common/input";
 
 class LoginForm extends Component {
   state = {
     account: { username: "", password: "" },
+    errors: {},
   };
 
-  username = React.createRef();
+  validate = () => {
+    const errors = {};
+
+    const { account } = this.state;
+
+    if (account.username.trim() === "")
+      errors.username = "Username is Required.";
+    if (account.password.trim() === "")
+      errors.password = "Password is Required.";
+
+    return Object.keys(errors).length === 0 ? null : errors;
+  };
 
   handeSubmit = (e) => {
     // Prevent default behaviour of this event
     // (full page reload)
     e.preventDefault();
 
-    // Call the server
-    // Save the changes
-    // Redirect the user to a different page
-    const username = this.username.current.value;
+    const errors = this.validate();
+    console.log(errors);
+    this.setState({ errors });
+    if (errors) return;
+
+    this.validate();
     console.log("Submitted");
   };
 
@@ -32,30 +47,20 @@ class LoginForm extends Component {
       <div>
         <h1>Login</h1>
         <form onSubmit={this.handeSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              autoFocus
-              value={account.username}
-              onChange={this.handleChange}
-              ref={this.username}
-              id="username"
-              name="username"
-              type="text"
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              value={account.password}
-              onChange={this.handleChange}
-              id="password"
-              name="password"
-              type="text"
-              className="form-control"
-            />
-          </div>
+          <Input
+            name="username"
+            label="Username"
+            value={account.username}
+            onChange={this.handleChange}
+          />
+
+          <Input
+            name="password"
+            label="Password"
+            value={account.password}
+            onChange={this.handleChange}
+          />
+
           <button className="btn btn-primary">Login</button>
         </form>
       </div>
