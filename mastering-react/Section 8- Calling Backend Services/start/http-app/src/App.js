@@ -33,10 +33,28 @@ class App extends Component {
   };
 
   handleDelete = async (post) => {
-    await axios.delete(apiEndpoint + "/" + post.id);
+    const originalPosts = this.state.posts;
 
     const posts = this.state.posts.filter((p) => p.id !== post.id);
     this.setState({ posts });
+
+    try {
+      await axios.delete("s" + apiEndpoint + "/" + post.id);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        // Expected  (404: not found, 400: bad request) - CLIENT ERRORS
+        // - Display a specific error message to the user
+        alert("This post has already been deleted.");
+      else {
+        // Unexepected (network down, server down, db down, bug)
+        // - Log them
+        // - Display a generic and friendly error message
+        console.log("Logging the error", ex);
+        alert("An unexpected error occured.");
+      }
+
+      this.setState({ posts: originalPosts });
+    }
   };
 
   render() {
