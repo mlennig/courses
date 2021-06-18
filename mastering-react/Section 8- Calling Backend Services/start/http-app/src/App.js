@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import http from "./services/httpService";
+import config from "./config.json";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-const apiEndpoint = "https://jsonplaceholder.typicode.com/posts";
 class App extends Component {
   state = {
     posts: [],
@@ -10,13 +12,13 @@ class App extends Component {
 
   async componentDidMount() {
     // pending > resolved (success) OR rejected (failure)
-    const { data: posts } = await axios.get(apiEndpoint);
+    const { data: posts } = await http.get(config.apiEndpoint);
     this.setState({ posts });
   }
 
   handleAdd = async () => {
     const obj = { title: "a", body: "b" };
-    const { data: post } = await axios.post(apiEndpoint, obj);
+    const { data: post } = await http.post(config.apiEndpoint, obj);
 
     const posts = [post, ...this.state.posts];
     this.setState({ posts });
@@ -24,7 +26,7 @@ class App extends Component {
 
   handleUpdate = async (post) => {
     post.title = "UPDATED";
-    await axios.put(apiEndpoint + "/" + post.id, post);
+    await http.put(config.apiEndpoint + "/" + post.id, post);
 
     const posts = [...this.state.posts];
     const index = posts.indexOf(post);
@@ -39,20 +41,10 @@ class App extends Component {
     this.setState({ posts });
 
     try {
-      await axios.delete("s" + apiEndpoint + "/" + post.id);
+      await http.delete("s" + config.apiEndpoint + "/" + post.id);
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
-        // Expected  (404: not found, 400: bad request) - CLIENT ERRORS
-        // - Display a specific error message to the user
         alert("This post has already been deleted.");
-      else {
-        // Unexepected (network down, server down, db down, bug)
-        // - Log them
-        // - Display a generic and friendly error message
-        console.log("Logging the error", ex);
-        alert("An unexpected error occured.");
-      }
-
       this.setState({ posts: originalPosts });
     }
   };
@@ -60,6 +52,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <ToastContainer />
         <button className="btn btn-primary" onClick={this.handleAdd}>
           Add
         </button>
