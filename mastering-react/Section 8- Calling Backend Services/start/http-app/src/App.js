@@ -40,13 +40,30 @@ class App extends Component {
     const posts = this.state.posts.filter((p) => p.id !== post.id);
     this.setState({ posts });
 
-    try {
+    await http
+      .delete(config.apiEndpoint + "/999" + post.id)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log("Reached the catch-block");
+        if (error.response && error.response.status === 404) {
+          alert("This post has already been deleted.");
+        }
+      });
+
+    /*     try {
+      console.log("entered try block");
       await http.delete("s" + config.apiEndpoint + "/" + post.id);
     } catch (ex) {
-      if (ex.response && ex.response.status === 404)
+      console.log("entered catch block");
+      console.log("ex.response = ", ex.response);
+      console.log("ex.response.status = ", ex.response.status);
+      if (ex.response && ex.response.status === 404) {
         alert("This post has already been deleted.");
+      }
       this.setState({ posts: originalPosts });
-    }
+    } */
   };
 
   render() {
