@@ -41,15 +41,17 @@ class App extends Component {
     this.setState({ posts });
 
     await http
-      .delete(config.apiEndpoint + "/999" + post.id)
+      .delete("s" + config.apiEndpoint + "/999" + post.id)
       .then((response) => {
-        console.log(response);
+        console.log("Reached the then block");
+        console.log("response: ", response);
       })
       .catch(function (error) {
         console.log("Reached the catch-block");
         if (error.response && error.response.status === 404) {
           alert("This post has already been deleted.");
         }
+        this.setState({ posts: originalPosts });
       });
 
     /*     try {
