@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { getGenres } from "../services/fakeGenreService";
-import { getMovie, saveMovie, deleteMovie } from "../services/fakeMovieService";
+import { getGenres } from "../services/genreService";
+import { getMovie, saveMovie } from "../services/movieService";
 
 class MovieForm extends Form {
   state = {
@@ -28,23 +28,33 @@ class MovieForm extends Form {
       .label("Daily Rental Rate"),
   };
 
-  componentDidMount() {
+  async populateGenres() {
     // Load genre list into state
-    const genres = getGenres();
+    const { data: genres } = await getGenres();
     this.setState({ genres });
+  }
 
-    const movieID = this.props.match.params.id;
-    // Movie doesn't exist yet, use new movie form
-    if (movieID === "new") return;
+  async populateMovie() {
+    try {
+      const movieID = this.props.match.params.id;
+      // Movie doesn't exist yet, use new movie form
+      if (movieID === "new") return;
 
-    const movie = getMovie(movieID);
-    // Movie ID does not exist or is incorrect, redirect to
-    // 'Not Found' page
-    if (!movie) return this.props.history.replace("/not-found");
+      const { data: movie } = await getMovie(movieID);
+      // Movie exists already in database, fill form with
+      // movie information
+      this.setState({ data: this.mapToViewModel(movie) });
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        // Movie ID does not exist or is incorrect, redirect to
+        // 'Not Found' page
+        this.props.history.replace("/not-found");
+    }
+  }
 
-    // Movie exists already in database, fill form with
-    // movie information
-    this.setState({ data: this.mapToViewModel(movie) });
+  async componentDidMount() {
+    await this.populateGenres();
+    await this.populateMovie();
   }
 
   mapToViewModel(movie) {
